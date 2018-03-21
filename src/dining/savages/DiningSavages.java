@@ -1,7 +1,6 @@
 
 package dining.savages;
 
-import java.lang.reflect.Array;
 import java.util.Scanner;
 
 public class DiningSavages {
@@ -18,9 +17,10 @@ public class DiningSavages {
             numSavages = in.nextInt();
             System.out.print("\n");
         }
-              
+
+        
         Pot pot = new Pot(0);
-        Cook cook = new Cook(pot, 7);
+        Cook cook = new Cook(pot, numSavages);
         cook.start();
         Savage[] Savages = new Savage[numSavages];
         

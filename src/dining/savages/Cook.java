@@ -2,6 +2,7 @@ package dining.savages;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Random;
 
 
 /**
@@ -12,10 +13,13 @@ public class Cook implements Runnable{
     private final Pot sharedPot;
     private Thread cook;
     private int servings;
+    private final int numTribe;
+    private Random rand;
     
-    public Cook(Pot pot, int servings) {
+    public Cook(Pot pot, int numTribe) {
         this.sharedPot = pot;
-        this.servings = servings;
+        this.numTribe = numTribe;
+        rand = new Random();
     }
     
     @Override
@@ -53,6 +57,9 @@ public class Cook implements Runnable{
     
     public int Refill() {
        try {
+           
+           servings = (rand.nextInt(numTribe*5/2) + (numTribe / 2) + 1);
+           
            sharedPot.servings += servings;
            System.out.print("The Cook has refilled the pot. There are now " + sharedPot.servings + " servings.\n");
        } finally {
