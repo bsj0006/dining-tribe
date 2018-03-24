@@ -65,6 +65,13 @@ public class Cook implements Runnable
           }
         }
       }
+
+      try {
+        Thread.sleep(1000);
+      } catch (InterruptedException e) {
+        System.out.println("Cooked failed to sleep.");
+      }
+
       //The pot is empty, refill it
       sharedPot.pot.lock();
       refill();
